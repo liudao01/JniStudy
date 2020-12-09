@@ -17,7 +17,7 @@ android {
                 cppFlags ""
 //                arguments '-DANDROID_TOOLCHAIN=clang', '-DANDROID_ARM_MODE=arm', '-DANDROID_STL=c++_static'
 //                cppFlags "-std=c++11 -frtti -fexceptions"
-//                abiFilters 'armeabi-v7a'//设置这个不会自动编译c++
+//                abiFilters 'armeabi-v7a'//设置这个不会编译引入的log库
             }
         }
 

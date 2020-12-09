@@ -9,7 +9,7 @@
 
 #include <sys/time.h>
 
-#define  LOG_TAG "JNI"
+#define  LOG_TAG "JNILIB"
 
 #define LOG_DEBUG true //日志开关，true为开，其它为关
 

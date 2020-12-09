@@ -14,7 +14,7 @@ Java_com_open_jnistudy_MainActivity_stringFromJNI(
     //定义一个C++语言字符串 注意导入了<string> 库
     std::string hello = "Hello from C++";
 //    LOGD("GetFFmpegVersion\n%s", "test");
-    LOGD("java调用c++");
+    LOGD("java调用c++返回字符串");
     return env->NewStringUTF(hello.c_str());
 }
 
@@ -24,7 +24,6 @@ Java_com_open_jnistudy_MainActivity_accessField(JNIEnv *env, jobject thiz) {
     LOGD("修改java 非静态变量 ");
     //得到jclass
     jclass jclz = env->GetObjectClass(thiz);
-    LOGD("java调用c++");
     /*反射：Class （反射的入口）
 	  反射：Field （成员变量）
 	  反射：Method （成员方法）*/
@@ -79,7 +78,7 @@ Java_com_open_jnistudy_MainActivity_accessStaticField(JNIEnv *env, jobject jobj)
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_open_jnistudy_MainActivity_accessMethod(JNIEnv *env, jobject thiz) {
-    LOGD("调用java 非静态方法 ");
+    LOGD("c++调用java 非静态方法 ");
 //    LOGCATE("GetFFmpegVersion\n%s", "strBuffer");
     //获取jclass
     jclass jclz = env->GetObjectClass(thiz);
