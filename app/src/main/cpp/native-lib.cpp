@@ -1,7 +1,7 @@
 #include <jni.h>
 #include <string>
 
-//#include "util/LogUtil.h"
+#include "util/LogUtil.h"
 //#include "util/AndroidLog.h"
 //#include "include/LogUtil.h"
 #include <android/log.h>
@@ -10,13 +10,11 @@ extern "C" JNIEXPORT jstring JNICALL
 Java_com_open_jnistudy_MainActivity_stringFromJNI(
         JNIEnv *env,
         jobject /* this */thiz) {
-//    LOGCATE("GetFFmpegVersion\n%s", "strBuffer");
 //    如果是c程序，要用 (*env)->
 //    如果是C++要用 env->
     //定义一个C++语言字符串 注意导入了<string> 库
     std::string hello = "Hello from C++";
 //    LOGD("GetFFmpegVersion\n%s", "test");
-    __android_log_print(ANDROID_LOG_ERROR, "jnilib", "The value of 1 + 1 is %d", 1 + 1);
 
     return env->NewStringUTF(hello.c_str());
 }

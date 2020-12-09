@@ -15,9 +15,9 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags ""
-                arguments '-DANDROID_TOOLCHAIN=clang', '-DANDROID_ARM_MODE=arm', '-DANDROID_STL=c++_static'
-                cppFlags "-std=c++11 -frtti -fexceptions"
-                abiFilters 'armeabi-v7a'
+//                arguments '-DANDROID_TOOLCHAIN=clang', '-DANDROID_ARM_MODE=arm', '-DANDROID_STL=c++_static'
+//                cppFlags "-std=c++11 -frtti -fexceptions"
+//                abiFilters 'armeabi-v7a'
             }
         }
 
