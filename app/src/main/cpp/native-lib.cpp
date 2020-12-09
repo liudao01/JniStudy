@@ -4,7 +4,6 @@
 #include "util/LogUtil.h"
 //#include "util/AndroidLog.h"
 //#include "include/LogUtil.h"
-#include <android/log.h>
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_open_jnistudy_MainActivity_stringFromJNI(
@@ -15,18 +14,17 @@ Java_com_open_jnistudy_MainActivity_stringFromJNI(
     //定义一个C++语言字符串 注意导入了<string> 库
     std::string hello = "Hello from C++";
 //    LOGD("GetFFmpegVersion\n%s", "test");
-
+    LOGD("java调用c++");
     return env->NewStringUTF(hello.c_str());
 }
 
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_open_jnistudy_MainActivity_accessField(JNIEnv *env, jobject thiz) {
-//    LOGD("GetFFmpegVersion\n%s", "test");
-//    LOGCATE("GetFFmpegVersion\n%s", "strBuffer");
+    LOGD("修改java 非静态变量 ");
     //得到jclass
     jclass jclz = env->GetObjectClass(thiz);
-
+    LOGD("java调用c++");
     /*反射：Class （反射的入口）
 	  反射：Field （成员变量）
 	  反射：Method （成员方法）*/
@@ -36,8 +34,6 @@ Java_com_open_jnistudy_MainActivity_accessField(JNIEnv *env, jobject thiz) {
     //得到key对应的值
     /* 获取java中str的值 */
     jstring jstr = (jstring) env->GetObjectField(thiz, jfieldId);
-
-//    LOGCATD("测试下打印");
 
 //    LOGD("android jni 打印")
     /* 将jstring转化为char */
@@ -62,8 +58,7 @@ Java_com_open_jnistudy_MainActivity_accessField(JNIEnv *env, jobject thiz) {
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_open_jnistudy_MainActivity_accessStaticField(JNIEnv *env, jobject jobj) {
-//    LOGD("GetFFmpegVersion\n%s", "test");
-//    LOGCATE("GetFFmpegVersion\n%s", "strBuffer");
+    LOGD("修改java 静态变量 ");
     //得到jclass
     jclass jclz = env->GetObjectClass(jobj);
 
@@ -84,7 +79,7 @@ Java_com_open_jnistudy_MainActivity_accessStaticField(JNIEnv *env, jobject jobj)
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_open_jnistudy_MainActivity_accessMethod(JNIEnv *env, jobject thiz) {
-//    LOGD("GetFFmpegVersion\n%s", "test");
+    LOGD("调用java 非静态方法 ");
 //    LOGCATE("GetFFmpegVersion\n%s", "strBuffer");
     //获取jclass
     jclass jclz = env->GetObjectClass(thiz);
@@ -95,14 +90,17 @@ Java_com_open_jnistudy_MainActivity_accessMethod(JNIEnv *env, jobject thiz) {
     //方法的名字 方法的签名
     jmethodID mid = env->GetMethodID(jclz, "getRandeomInt", "(I)I");
 
+    LOGD("mid  mid");
     if (NULL == mid) {
         printf("mid == null");
     }
     //调用java的方法
     jint random = env->CallIntMethod(thiz, mid, 100);
+    LOGD("C random: %d \n", random);
     if (NULL == random) {
         printf("randow == null");
     }
+    LOGD("C random: %d \n", random);
     printf("C random: %d \n", random);
 
 }

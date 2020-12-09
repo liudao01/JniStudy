@@ -88,7 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 toastUtils.showLongToast("c++修改java静态变量: " + count);
                 break;
             case 3:
-                //c调用
+                //c调用java方法
+                LogUtil.d("c调用java方法");
                 mainActivity.accessMethod();
                 break;
         }
@@ -102,7 +103,9 @@ public class MainActivity extends AppCompatActivity {
      * @return
      */
     int getRandeomInt(int max) {
-        return new Random().nextInt(max);
+        final int i = new Random().nextInt(max);
+        LogUtil.d("getRandeomInt = " + i);
+        return i;
     }
 
 
