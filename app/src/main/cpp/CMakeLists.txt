@@ -14,7 +14,7 @@ message(STATUS "========> the PROJECT_BINARY_DIR is : ${PROJECT_BINARY_DIR}")
 message(STATUS "========> the cmakeList.txt PATH is : ${CMAKE_CURRENT_SOURCE_DIR}")
 message(STATUS "========> distribution_DIR is : ${distribution_DIR}")
 
-#set(jnilibs ${CMAKE_SOURCE_DIR}/../jniLibs)
+set(jnilibs ${CMAKE_SOURCE_DIR}/../jniLibs)
 project("JniStudy")
 
 #找到包含所有的cpp文件
@@ -24,10 +24,10 @@ file(GLOB my_source *.cpp *.c)
 #为了让 CMake 能够在编译时找到头文件，您需要使用 include_directories() 命令并包含相应头文件的路径：
 
 ##添加头文件搜索目录  发现一个android studio的bug 如果没有使用头文件 那么引入头文件的时候会一直报错. 我再这里被坑了很久.
-#include_directories(
-#        include
-#        util
-#)
+include_directories(
+        include
+        util
+)
 #
 #link_directories(
 #        ${jnilibs}/${ANDROID_ABI}
@@ -52,6 +52,8 @@ find_library( # Sets the name of the path variable.
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
+link_directories(
+        ${jnilibs}/${ANDROID_ABI})
 
 target_link_libraries( # Specifies the target library.
         native-lib

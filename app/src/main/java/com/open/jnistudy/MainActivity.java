@@ -65,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 myOnclick(position);
             }
         });
+
+        native_GetFFmpegVersion();
     }
 
     private void myOnclick(int item) {
@@ -121,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
 
     //c 调用 非静态 java 方法
     public native void accessMethod();
+
+    private static native String native_GetFFmpegVersion();
 
 
 }
