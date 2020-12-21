@@ -14,6 +14,7 @@ extern "C" {
 #include <libavfilter/version.h>
 #include <libswresample/version.h>
 #include <libswscale/version.h>
+#include <libavformat/avformat.h>
 };
 
 extern "C"
@@ -140,5 +141,8 @@ Java_com_open_jnistudy_MainActivity_native_1GetFFmpegVersion(JNIEnv *env, jclass
     strcat(strBuffer, "\navcodec_license : ");
     strcat(strBuffer, avcodec_license());
     LOGD("GetFFmpegVersion\n%s", strBuffer);
+    av_register_all();
+    int init = avformat_network_init();
+    LOGD("init = %s", init);
     return env->NewStringUTF(strBuffer);
 }
